@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
 
-const Sidebar = () => {
+const Sidebar = ({ countries, setNewContent }) => {
   return (
     <ul className='sidebar'>
-      <SidebarItem text='Intrtoduction' />
-      <SidebarItem text='Tutorials' />
-      <SidebarItem text='Recipes' />
-      <SidebarItem text='Cookbook' />
+      {Object.keys(countries).map((region, index) => {
+        return (
+          <SidebarItem
+            role='listitem'
+            key={index}
+            text={region}
+            clicked={setNewContent}
+            items={Object.values(countries)[index]}
+          />
+        );
+      })}
     </ul>
   );
 };
 
-const SidebarItem = props => {
+const SidebarItem = ({ items, text, clicked }) => {
   const [open, setOpen] = useState(false);
   return (
     <li className='sidebar-item'>
       <div className='sidebar-item-header'>
-        <p>{props.text}</p>
+        <p>{text}</p>
         <button
           className={`sidebar-button ${open ? 'open-sidebar-button' : ''}`}
           onClick={() => setOpen(!open)}
@@ -25,7 +32,17 @@ const SidebarItem = props => {
           <FaChevronRight />
         </button>
       </div>
-      {open && <p className='sidebar-item-content'>Hello !</p>}
+      {open && (
+        <ul className='sidebar-item-list'>
+          {items.map((item, index) => {
+            return (
+              <li key={index} onClick={() => clicked(item)}>
+                {item}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </li>
   );
 };

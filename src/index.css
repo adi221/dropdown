@@ -46,6 +46,9 @@ button {
 
 /* Nav */
 .navbar {
+  position: absolute;
+  left: 0;
+  top: 0;
   padding: 0 1rem;
   background-color: var(--bg);
   height: var(--nav-size);
@@ -132,6 +135,17 @@ button {
   padding: 0.5rem;
 }
 
+/* Middle */
+
+.middle {
+  margin-top: var(--nav-size);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  justify-items: center;
+}
+
 /* Sidebar */
 
 .sidebar {
@@ -149,6 +163,11 @@ button {
   max-width: 100%;
   padding: 0.3rem 1rem;
   color: var(--text-color);
+}
+
+.sidebar-item-header p {
+  font-weight: bold;
+  letter-spacing: 0.6px;
 }
 
 .sidebar-item-header:hover {
@@ -178,7 +197,51 @@ button {
   transform: rotate(90deg);
 }
 
-.sidebar-item-content {
+.sidebar-item-list {
+  padding-left: 1rem;
+}
+
+.sidebar-item-list li {
+  cursor: pointer;
   color: var(--text-color);
-  padding: 0.3rem 1rem;
+  margin: 0.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-item-list li:hover {
+  padding-left: 5px;
+}
+
+/* Content */
+
+.content-country {
+  width: 350px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+
+.content-country img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.content-country-details {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.content-country-details span {
+  font-style: italic;
+}
+
+.content-button {
+  display: block;
+  background-color: var(--bg-accent);
+  width: 250px;
+  border-radius: 10px;
+  padding: 1rem;
+  color: var(--text-color);
+  font-size: 20px;
+  margin: 0 auto;
 }

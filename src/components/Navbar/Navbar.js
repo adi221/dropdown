@@ -9,7 +9,7 @@ import {
 
 const Navbar = props => {
   return (
-    <nav className='navbar'>
+    <nav className='navbar' role='navigation'>
       <ul className='navbar-nav'>
         <NavItem icon={<FaPlus />} />
         <NavItem icon={<FaBell />} />
@@ -62,4 +62,5 @@ const DropdownItem = props => {
   );
 };
 
+export { DropdownMenu };
 export default Navbar;
