@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 import Content from './components/Content/Content';
+import Form from './components/Form/Form';
 
 function App() {
   const [data, setData] = useState([]);
   const [countries, setCountries] = useState({});
   const [content, setContent] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
   const fetchCountries = async url => {
     try {
@@ -50,7 +52,10 @@ function App() {
           countries={countries}
           setNewContent={name => setNewContent(name)}
         />
-        <Content country={content} />
+        <div className='middle-center'>
+          <Content country={content} showForm={e => setShowForm(!showForm)} />
+          <Form isShow={showForm} />
+        </div>
       </main>
     </>
   );

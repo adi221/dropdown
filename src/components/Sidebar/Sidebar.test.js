@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Sidebar from './Sidebar';
 
 test('Displays the correct list of regions', async () => {
   render(<Sidebar />);
-  const listRegions = await screen.findAllByRole('listitem');
-  console.log(listRegions);
+
+  await waitFor(async () => {
+    const listRegions = await screen.findAllByRole('list');
+
+    expect(listRegions).toHaveLength(6);
+  });
 });

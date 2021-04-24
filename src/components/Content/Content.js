@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
-const Content = ({ country }) => {
+const Content = ({ country, showForm }) => {
   const [value, setValue] = useState('Press Here');
+
+  const clickHandler = () => {
+    setValue(val => (val === 'Press Here' ? 'Clicked' : 'Press Here'));
+    showForm();
+  };
+
   return (
     <div className='content'>
       {country !== '' && (
@@ -21,12 +27,7 @@ const Content = ({ country }) => {
           </div>
         </article>
       )}
-      <button
-        className='content-button'
-        onClick={() =>
-          setValue(val => (val === 'Press Here' ? 'Clicked' : 'Press Here'))
-        }
-      >
+      <button className='content-button' onClick={clickHandler}>
         {value}
       </button>
     </div>
